@@ -1,16 +1,34 @@
-const { src, dest, watch } = require("gulp");
+const { watch, series, src, dest } = require("gulp");
+const babel = require("gulp-babel");
 const sass = require("gulp-sass")(require("sass"));
+const uglify = require("gulp-uglify");
+const rename = require("gulp-rename");
+const autoprefixer = require("gulp-autoprefixer");
 
-function css(done) {
-  console.log("Compiling SASS...");
-  src("./public/main.scss") // Identify principal file
-    .pipe(sass()) // Compile SASS
-    .pipe(dest("public")); // Export it or save it in a location
-
-  done();
+function compileJS() {
+  return src("./node_modules/bootstrap/dist/js/*.js")
+    .pipe(
+      babel({
+        presets: ["@babel/preset-env"],
+      })
+    )
+    .pipe(uglify())
+    .pipe(rename({ suffix: "-build.min" }))
+    .pipe(dest("./public/assets/js/"));
 }
 
-function dev( ) {
-
+function compileSCSS() {
+  return src("./public/assets/sass/**/*.scss")
+    .pipe(sass({ outputStyle: "compressed" }).on("error", sass.logError))
+    .pipe(autoprefixer("last 2 versions"))
+    .pipe(rename({ extname: "-build.min.css" }))
+    .pipe(dest("./public/assets/css/"));
 }
-exports.css = css;
+
+function watchFiles() {
+  watch(["./public/**/**.scss", "./public/**/**.scss"], compileSCSS);
+  watch("./public/assets/js/**/*.js", compileJS);
+}
+
+exports.build = series(compileSCSS, compileJS);
+exports.watch = watchFiles;
