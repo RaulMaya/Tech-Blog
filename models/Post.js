@@ -20,7 +20,7 @@ Post.init(
       allowNull: false,
     },
     description: {
-      type: DataTypes.FLOAT,
+      type: DataTypes.TEXT,
       allowNull: false,
     },
     user_id: {
@@ -28,7 +28,6 @@ Post.init(
       references: {
         model: "user",
         key: "id",
-        unique: false,
       },
     },
   },

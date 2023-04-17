@@ -3,18 +3,20 @@ const { User, Post } = require("../../models");
 
 // Create new post
 router.post("/", async (req, res) => {
+  console.log(req.session.userId)
   try {
-    const userId = req.session.userId;
-    const { title, text } = req.body;
+    const userId = req.session.userId
+    console.log("Burning Love", req.session.userId)
+    const { postTitle, postText } = req.body;
     if (!req.body || !userId) {
       return res.status(400).json({ error: "Missing values" });
     }
     const newPost = await Post.create({
-      title,
-      text,
-      userId,
+      post_title: postTitle,
+      description: postText,
+      user_id: userId,
     });
-    console.log(newPost);
+
     res.status(200).json(newPost);
   } catch (err) {
     console.log(err);
