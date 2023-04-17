@@ -1,0 +1,24 @@
+{{> nav-bar}}
+<script src="/assets/js/postActions.js" defer></script>
+<div class="container">
+  <form>
+    <div class="mb-3">
+      <label for="postTitle" class="form-label">Post Title</label>
+      <input
+        type="text"
+        class="form-control"
+        id="postTitle"
+      />
+      <div id="titleHelper" class="form-text">
+        Customize your post title using bootstrap classes or inline CSS syntax.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="postText" class="form-label">Post Text</label>
+      <textarea class="form-control" id="postText" rows="3"></textarea>
+      <div id="textHelper" class="form-text">
+        Customize your post body using bootstrap classes or inline CSS syntax.
+      </div>
+    </div>
+    <button id="writePostSubmit" type="submit" class="btn btn-primary">Submit</button></form>
+</div>
