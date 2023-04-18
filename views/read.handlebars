@@ -1,20 +1,4 @@
 {{> nav-bar}}
-<div class="container-fluid bg-primary">
-  <h1>Focus on your goals</h1>
-  <p>Discover new post, stories and information</p>
-  <a href="/read"><button type="button" class="btn btn-success">Start reading</button></a>
-  {{#if loggedIn}}
-    <a href="/write"><button type="button" class="btn btn-success">Start writing</button></a>
-  {{else}}
-    <button
-    type="button"
-    class="btn btn-success"
-    data-bs-toggle="modal"
-    data-bs-target="#exampleModal">Log In
-    </button>
-  {{/if}}
-</div>
-
 <div class="container">
   {{#if loggedIn}}
     {{#each posts as |post|}}
