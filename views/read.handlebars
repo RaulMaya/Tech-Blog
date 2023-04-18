@@ -8,7 +8,7 @@
     <p>{{post.user_id}}</p>
     <p>{{post.createdAt}}</p>
     <p>{{post.updatedAt}}</p>
-    <button type="button" class="btn btn-success">View Full Post</button>
+    <a href="/posts/{{post.id}}"><button type="button" class="btn btn-success">View Full Post</button></a>
     {{/each}}
   {{else}}
     {{#each posts as |post|}}
