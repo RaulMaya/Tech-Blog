@@ -15,10 +15,6 @@ Comments.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    comments_title: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
     comment_description: {
       type: DataTypes.FLOAT,
       allowNull: false,

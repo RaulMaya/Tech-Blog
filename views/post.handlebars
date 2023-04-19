@@ -1,9 +1,28 @@
 {{> nav-bar}}
+<script src="/assets/js/commentActions.js" defer></script>
 <div class="container">
-<h1>{{post.id}}</h1>
-<h2>{{post.post_title}}</h2>
-<h3>{{post.description}}</h3>
-<h4>{{post.user_id}}</h4>
-<h5>{{post.createdAt}}</h5>
-<p>{{post.user.username}}</p>
+  <h1>{{post.id}}</h1>
+  <h2>{{post.post_title}}</h2>
+  <h3>{{post.description}}</h3>
+  <h4>{{post.user_id}}</h4>
+  <h5>{{post.createdAt}}</h5>
+  <p>{{post.user.username}}</p>
+</div>
+<div class="container">
+  <h3>Here are the comments</h3>
+</div>
+<div class="container">
+    <form>
+    <label for="commentsInput" class="form-label">What do you think?</label>
+    <input
+        type="text"
+        id="commentsInput"
+        class="form-control"
+        aria-labelledby="userComment"
+    />
+    <div id="userComment" class="form-text">
+        This is a space where you can comment and share your opinions or thoughts about this topic
+    </div>
+    <button value="{{post.id}}" id="writeComment" type="submit" class="btn btn-secondary">Comment</button>
+    </form>
 </div>
