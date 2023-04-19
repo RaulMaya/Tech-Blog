@@ -1,14 +1,49 @@
 {{> nav-bar}}
+<script src="/assets/js/deletePost.js" defer></script>
+
 <div class="container">
     {{#each posts as |post|}}
     <p>{{post.id}}</p>
-    <p>{{post.post_title}}</p>
-    <p>{{post.description}}</p>
+    <p id="titleOfPost">{{post.post_title}}</p>
+    <p id="textOfPost">{{post.description}}</p>
     <p>{{post.user_id}}</p>
     <p>{{post.createdAt}}</p>
     <p>{{post.updatedAt}}</p>
     <a href="/posts/{{post.id}}"><button type="button" class="btn btn-success">View Full Post</button></a>
-    <button type="button" class="btn btn-danger">Delete</button>
-    <button type="button" class="btn btn-primary">Edit</button>
+    <button id="deletePost" value="{{post.id}}" type="button" class="btn btn-danger">Delete</button>
+    <button id="editPost" value="{{post.id}}" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#{{post.id}}">Edit</button>
+    <div class="modal fade" id="{{post.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Update Post</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+        <form>
+            <div class="mb-3">
+            <label for="postTitle" class="form-label">New Post Title</label>
+            <input
+                type="text"
+                class="form-control"
+                id="postTitle"
+                value="{{post.post_title}}"
+            />
+            </div>
+            <div class="mb-3">
+            <label for="postText" class="form-label">New Post Text</label>
+            <textarea class="form-control" id="postText">{{post.description}}</textarea>
+            </div>
+        </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button id="confirmUpdate" type="button" class="btn btn-primary">Update</button>
+        </div>
+        </div>
+    </div>
+    </div>
     {{/each}}
 </div>
+
+<script src="/assets/js/updatePost.js" defer></script>

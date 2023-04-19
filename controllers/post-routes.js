@@ -17,7 +17,7 @@ router.get("/:id", withAuth, async (req, res) => {
           include: [
             {
               model: User,
-              attributes: ["firstname", "lastname", "username"],
+              attributes: ["id", "firstname", "lastname", "username"],
             },
           ],
         },

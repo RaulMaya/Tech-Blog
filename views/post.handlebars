@@ -9,9 +9,13 @@
   <p>{{post.user.username}}</p>
 </div>
 <div class="container">
-  <h6>Comment Section</h6>
+  <h6>Comment Section {{userid}}</h6>
   {{#each postComments as |comment|}}
-    <p>{{comment.comment_description}} by {{comment.user.firstname}} {{comment.user.lastname}}</p>
+    {{#ifEquals comment.user.id ../userid}}
+        <p>{{comment.comment_description}} by {{comment.user.firstname}} {{comment.user.lastname}} <i class="fa-solid fa-trash"></i><i class="fa-solid fa-pen"></i></p>
+    {{else}}
+        <p>{{comment.comment_description}} by {{comment.user.firstname}} {{comment.user.lastname}} </p>
+    {{/ifEquals}}
   {{/each}}
 </div>
 <div class="container">
@@ -29,3 +33,4 @@
     <button value="{{post.id}}" id="writeComment" type="submit" class="btn btn-secondary">Comment</button>
     </form>
 </div>
+<h1>HELLO IM {{userid}}</h1>

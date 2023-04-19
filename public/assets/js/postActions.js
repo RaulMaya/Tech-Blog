@@ -27,5 +27,3 @@ const newPost = async (event) => {
 };
 
 document.getElementById("writePostSubmit").addEventListener("click", newPost);
-
-
