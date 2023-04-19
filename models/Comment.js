@@ -16,7 +16,7 @@ Comments.init(
       autoIncrement: true,
     },
     comment_description: {
-      type: DataTypes.FLOAT,
+      type: DataTypes.TEXT,
       allowNull: false,
     },
     post_id: {

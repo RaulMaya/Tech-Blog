@@ -13,7 +13,7 @@ router.get("/:id", withAuth, async (req, res) => {
         },
         {
           model: Comment,
-          attributes: ["comment_description", "user_id"],
+          attributes: ["comment_description"],
           include: [
             {
               model: User,
@@ -25,8 +25,10 @@ router.get("/:id", withAuth, async (req, res) => {
     });
     let post = dbPosts.get({ plain: true });
     console.log(post)
+    let postComments = post.comments
     res.render("post", {
       post,
+      postComments,
       loggedIn: req.session.loggedIn,
       userid: req.session.userId,
     });

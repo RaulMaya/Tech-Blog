@@ -9,7 +9,10 @@
   <p>{{post.user.username}}</p>
 </div>
 <div class="container">
-  <h3>Here are the comments</h3>
+  <h6>Comment Section</h6>
+  {{#each postComments as |comment|}}
+    <p>{{comment.comment_description}} by {{comment.user.firstname}} {{comment.user.lastname}}</p>
+  {{/each}}
 </div>
 <div class="container">
     <form>
