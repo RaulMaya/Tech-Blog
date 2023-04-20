@@ -1,23 +1,21 @@
 {{> nav-bar}}
-<div class="container">
+<div class="container d-flex flex-wrap mt-3">
   {{#if loggedIn}}
     {{#each posts as |post|}}
-    <p>{{post.id}}</p>
-    <p>{{post.post_title}}</p>
-    <p>{{post.description}}</p>
-    <p>{{post.user_id}}</p>
-    <p>{{post.createdAt}}</p>
-    <p>{{post.updatedAt}}</p>
-    <a href="/posts/{{post.id}}"><button type="button" class="btn btn-success">View Full Post</button></a>
+      <div class="post-card p-4">
+        <p class="mb-1">{{post.user.firstname}} {{post.user.lastname}} <img src="/images/verified.png" alt="verfied" style="width:14px"></p>
+        <strong><p class="mb-1 fs-5">{{post.post_title}}</p></strong>
+        <p >{{ post.createdAt}}</p>
+        <a href="/posts/{{post.id}}"><button type="button" class="btn btn-success">View Full Post</button></a>
+      </div>
     {{/each}}
   {{else}}
     {{#each posts as |post|}}
-    <p>{{post.id}}</p>
-    <p>{{post.post_title}}</p>
-    <p>{{post.description}}</p>
-    <p>{{post.user_id}}</p>
-    <p>{{post.createdAt}}</p>
-    <p>{{post.updatedAt}}</p>
+      <div class="post-card p-4">
+        <p class="mb-1">{{post.user.firstname}} {{post.user.lastname}} <img src="/images/verified.png" alt="verfied" style="width:14px"></p>
+        <strong><p class="mb-1 fs-5">{{post.post_title}}</p></strong>
+        <p >{{ post.createdAt}}</p>
+      </div>
     {{/each}}
   {{/if}}
 </div>

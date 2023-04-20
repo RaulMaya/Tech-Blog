@@ -1,7 +1,11 @@
-const updatePost = async () => {
-    postId = document.querySelector(".fade").id
-    const postTitle = document.querySelector("#postTitle").value;
-    const postText = document.querySelector("#postText").value;
+const updatePost = async (i) => {
+    const fades = document.getElementsByClassName("fade")
+    const postTitles = document.getElementsByClassName("postTitle");
+    const postTexts = document.getElementsByClassName("postText");
+    
+    const postId = fades[i].id
+    const postTitle = postTitles[i].value
+    const postText = postTexts[i].value
 
     try {
       const response = await fetch(`/api/posts/${postId}`, {
@@ -25,4 +29,8 @@ const updatePost = async () => {
     }
   };
 
-document.getElementById("confirmUpdate").addEventListener("click", updatePost);
+const updateBtns = document.getElementsByClassName("confirmUpdate");
+
+for (let i = 0; i < updateBtns.length; i++) {
+  updateBtns[i].addEventListener("click", updatePost.bind(this, i));
+}

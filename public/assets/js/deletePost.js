@@ -1,17 +1,17 @@
 const deletePost = async (event) => {
     event.preventDefault();
-  
+
     const postToDelete = document.querySelector("#deletePost").value;
-  
+
     console.log(postToDelete);
     try {
       const response = await fetch(`/api/posts/${postToDelete}`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
       });
-  
+
       console.log(response);
-  
+
       if (response.ok) {
         console.log(`Post Deleted`);
         // Reload the page to display the new post
@@ -24,5 +24,9 @@ const deletePost = async (event) => {
       res.status(500).json(err);
     }
   };
-  
-  document.getElementById("deletePost").addEventListener("click", deletePost);
+
+const deleteBtns = document.getElementsByClassName("deletePost");
+
+for (let i = 0; i < deleteBtns.length; i++) {
+  deleteBtns[i].addEventListener("click", deletePost);
+}

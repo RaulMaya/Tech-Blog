@@ -39,6 +39,7 @@ router.put("/:id", async (req, res) => {
       },
     });
 
+    console.log("=========================", req.params.id)
     if (!updatePost) {
       res.status(404).json({ message: "No post found with that id!" });
       return;
