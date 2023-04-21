@@ -2,21 +2,27 @@
 <script src="/assets/js/commentActions.js" defer></script>
 <div class="container mt-4">
   <h1 class="text-secondary">{{post.post_title}}</h1>
-  <p>by {{post.user.firstname}} {{post.user.lastname}}  <img src="/images/verified.png" alt="verfied" style="width:14px"></p>
+  <p class="mb-0">by {{post.user.firstname}} {{post.user.lastname}}  <img src="/images/verified.png" alt="verfied" style="width:14px"></p>
+  <p class="form-text mb-0">Created on: {{dateFormatter post.createdAt}}</p>
+  <p class="form-text">Last Update: {{post.updatedAt}}</p>
+  <hr class="mb-4">
   <h3>{{post.description}}</h3>
 
-  <h5>{{post.createdAt}}</h5>
+
   
 </div>
 <div class="container mt-5">
   <h6>Comment Section</h6>
+  <hr class="text-primary">
   {{#each postComments as |comment|}}
     {{#ifEquals comment.user.id ../userid}}
-        <p>{{comment.comment_description}}  <i class="fa-solid fa-trash ms-1 me-2"></i><i class="fa-solid fa-pen"></i></p>
-        <p class="form-text">by {{comment.user.firstname}} {{comment.user.lastname}}</p>
+        <p class="mb-0">{{comment.comment_description}}  <i class="fa-solid fa-trash ms-1 me-2"></i><i class="fa-solid fa-pen"></i></p>
+        <p class="form-text">by {{comment.user.firstname}} {{comment.user.lastname}} <img src="/images/verified.png" alt="verfied" style="width:14px"></p>
+        <hr>
     {{else}}
-        <p>{{comment.comment_description}}</p>
-        <p>by {{comment.user.firstname}} {{comment.user.lastname}}</p>
+        <p class="mb-0">{{comment.comment_description}}</p>
+        <p class="form-text">by {{comment.user.firstname}} {{comment.user.lastname}} <img src="/images/verified.png" alt="verfied" style="width:14px"></p>
+        <hr>
     {{/ifEquals}}
   {{/each}}
 </div>
@@ -32,6 +38,6 @@
     <div id="userComment" class="form-text">
         This is a space where you can comment and share your opinions or thoughts about this topic
     </div>
-    <button value="{{post.id}}" id="writeComment" type="submit" class="btn btn-secondary">Comment</button>
+    <button value="{{post.id}}" id="writeComment" type="submit" class="btn btn-secondary mt-3">Comment</button>
     </form>
 </div>
