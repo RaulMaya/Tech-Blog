@@ -1,20 +1,22 @@
 {{> nav-bar}}
 <script src="/assets/js/commentActions.js" defer></script>
-<div class="container">
-  <h1>{{post.id}}</h1>
-  <h2>{{post.post_title}}</h2>
+<div class="container mt-4">
+  <h1 class="text-secondary">{{post.post_title}}</h1>
+  <p>by {{post.user.firstname}} {{post.user.lastname}}  <img src="/images/verified.png" alt="verfied" style="width:14px"></p>
   <h3>{{post.description}}</h3>
-  <h4>{{post.user_id}}</h4>
+
   <h5>{{post.createdAt}}</h5>
-  <p>{{post.user.username}}</p>
+  
 </div>
-<div class="container">
-  <h6>Comment Section {{userid}}</h6>
+<div class="container mt-5">
+  <h6>Comment Section</h6>
   {{#each postComments as |comment|}}
     {{#ifEquals comment.user.id ../userid}}
-        <p>{{comment.comment_description}} by {{comment.user.firstname}} {{comment.user.lastname}} <i class="fa-solid fa-trash"></i><i class="fa-solid fa-pen"></i></p>
+        <p>{{comment.comment_description}}  <i class="fa-solid fa-trash ms-1 me-2"></i><i class="fa-solid fa-pen"></i></p>
+        <p class="form-text">by {{comment.user.firstname}} {{comment.user.lastname}}</p>
     {{else}}
-        <p>{{comment.comment_description}} by {{comment.user.firstname}} {{comment.user.lastname}} </p>
+        <p>{{comment.comment_description}}</p>
+        <p>by {{comment.user.firstname}} {{comment.user.lastname}}</p>
     {{/ifEquals}}
   {{/each}}
 </div>
@@ -33,4 +35,3 @@
     <button value="{{post.id}}" id="writeComment" type="submit" class="btn btn-secondary">Comment</button>
     </form>
 </div>
-<h1>HELLO IM {{userid}}</h1>
