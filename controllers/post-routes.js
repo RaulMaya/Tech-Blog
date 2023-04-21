@@ -13,7 +13,7 @@ router.get("/:id", withAuth, async (req, res) => {
         },
         {
           model: Comment,
-          attributes: ["comment_description"],
+          attributes: ["id", "comment_description"],
           include: [
             {
               model: User,

@@ -19,7 +19,7 @@ const updatePost = async (i) => {
       if (response.ok) {
         console.log(`Post updated`);
         // Reload the page to display the new post
-        location.reload();
+        location.reload(true);
       } else {
         console.log(`Failed to update post`);
       }
