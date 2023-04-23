@@ -14,7 +14,7 @@ router.get("/", async (req, res) => {
     });
 
     let posts = dbPosts.map((post) => post.get({ plain: true }));
-    console.log(posts);
+    posts = posts.slice(0, 6)
     res.render("index", {
       posts,
       loggedIn: req.session.loggedIn,
