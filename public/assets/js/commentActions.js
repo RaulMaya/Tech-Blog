@@ -16,7 +16,7 @@ const newComment = async (event) => {
       if (response.ok) {
         console.log(`Comment created`);
         // Reload the page to display the new post
-        location.reload();
+        location.reload(true);
       } else {
         console.log(`Failed to create comment`);
       }

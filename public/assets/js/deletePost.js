@@ -15,7 +15,7 @@ const deletePost = async (event) => {
       if (response.ok) {
         console.log(`Post Deleted`);
         // Reload the page to display the new post
-        location.reload();
+        location.reload(true);
       } else {
         console.log(`Failed to delete post`);
       }

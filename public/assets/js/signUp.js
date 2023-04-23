@@ -29,7 +29,7 @@ const signupFormHandler = async (event) => {
       });
 
       if (response.ok) {
-        window.location.reload();
+        window.location.reload(true);
       } else {
         alert("Failed to sign up.");
       }

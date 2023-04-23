@@ -9,7 +9,7 @@ const logout = async (event) => {
 
   if (response.ok) {
     document.location.replace("/");
-    window.location.reload();
+    window.location.reload(true);
   } else {
     alert("Failed to log out.");
   }

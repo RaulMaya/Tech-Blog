@@ -16,7 +16,7 @@ const newPost = async (event) => {
     if (response.ok) {
       console.log(`Post created`);
       // Reload the page to display the new post
-      location.reload();
+      location.reload(true);
     } else {
       console.log(`Failed to create post`);
     }
